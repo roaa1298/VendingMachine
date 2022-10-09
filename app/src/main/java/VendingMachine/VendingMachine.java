@@ -39,27 +39,36 @@ public class VendingMachine {
     }
 
     public boolean BuyItem(String name){
+        int itemPrice;
         for (int i=0; i<items.size() ; i++)
         {
             if (Objects.equals(items.get(i).name.toLowerCase(), name.toLowerCase()))
             {
+                if (Objects.equals(items.get(i).type, ItemType.HotDrinks))
+                {
+                    itemPrice=items.get(i).price+1;
+                }
+                else
+                {
+                    itemPrice=items.get(i).price;
+                }
                 // if the price of the item equal to the credit
-                if (items.get(i).price==this.money)
+                if (itemPrice==this.money)
                 {
                     System.out.println(items.get(i).name+" dropped");
                     this.money=0;
                     return true;
                 }
                 // if the credit greater than the price
-                if (items.get(i).price<this.money)
+                if (itemPrice<this.money)
                 {
                     System.out.println(items.get(i).name+" dropped");
-                    this.money=this.money-items.get(i).price;
+                    this.money=this.money-itemPrice;
                     System.out.println(ReturnChange()+" JD's returned");
                     return true;
                 }
                 // if the credit less than the price
-                if (items.get(i).price>this.money)
+                if (itemPrice>this.money)
                 {
                     System.out.println("Sorry, Not enough credit");
                     return false;

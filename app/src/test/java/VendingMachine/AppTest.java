@@ -34,14 +34,14 @@ class AppTest {
         assertFalse(vendingMachine.BuyItem("Mango Juice"),"Mango Juice is not available");
 
         assertTrue(vendingMachine.BuyItem("Latte"),"Latte should be bought successfully");
-        assertEquals(16, vendingMachine.GetCredit(), "Get credit should be 16");
-
-        assertTrue(vendingMachine.BuyItem("Tea"),"Tea should be bought successfully");
         assertEquals(15, vendingMachine.GetCredit(), "Get credit should be 15");
 
-        assertTrue(vendingMachine.BuyItem("Flafel"),"Flafel should be bought successfully");
+        assertTrue(vendingMachine.BuyItem("Tea"),"Tea should be bought successfully");
         assertEquals(13, vendingMachine.GetCredit(), "Get credit should be 13");
 
-        assertEquals(13,vendingMachine.ReturnChange(),"Change is 13");
+        assertTrue(vendingMachine.BuyItem("Flafel"),"Flafel should be bought successfully");
+        assertEquals(11, vendingMachine.GetCredit(), "Get credit should be 11");
+
+        assertEquals(11,vendingMachine.ReturnChange(),"Change is 11");
     }
 }
